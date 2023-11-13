@@ -5,47 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue 기초 익히기</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
 </head>
+
 <body>
     <div id="app">
-        {{person.name}}
-        {{person.age}} <br>
-        {{nextYear('오늘 좋은하루입니다. ')}} <br>
+        <!-- 이벤트2. 클릭 시 증가 감소
+        {{year}} <br>
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+        -->
 
-        <!-- <input v-bind:type="type" v-bind:value="inputData"> -->
-        <input :type="type" :value="inputData">
-        <a :href="getKossieCoderLink('kossiecoder')">코지코더 채널</a>
+        <form v-on:submit.prevent="submit">
+            <input type="text"><br>
+            <button type="submit">Submit</button> 
+        </form>
+
+
+        </form>
+
     </div>
-
     <script>
         new Vue({
             el : '#app',
             data :{
-
-                person : {
-                    name : '코지 코더',
-                    age : 34
-                },
-                inputData:"hellow",
-                type:"text",
-                link : "https://www.youtube.com/"
-
+                year: 2018
             },
             methods: {
-                getKossieCoderLink(channel) {
-                    return this.link + channel;
-
+                alert() {
+                    alert('hi educon');
                 },
 
-                nextYear(greating) {
-                    return greating + '! ' + this.person.name + '는 내년에 ' + (this.person.age +1) + '살 입니다.';
-                },
-                otherFuntion : function(){
-                    this.nextYear();
+                // 이벤트2. 클릭 시 증가 감소
+                //plus() { this.year++; },
+                //minus() { this.year--; }
+
+                // submit 이벤트
+                submit() { alert('submitted'); 
+                    console.log('hello');
                 }
-                
-            },
+            } 
         })
     </script>
 </body>
